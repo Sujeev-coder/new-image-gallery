@@ -38,7 +38,7 @@ const page = () => {
 
 
 
-  <input className='m-6 w-30 rounded text-center text-xl' type='text' placeholder='search here' value={search} onChange={(e) => {
+  <input className='m-6 w-10 rounded text-center text-xl' type='text' placeholder='search here' value={search} onChange={(e) => {
     setsearch(e.currentTarget.value)
 
     console.log(e.target.value)
