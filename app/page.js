@@ -17,7 +17,10 @@ const page = () => {
 
     e.preventDefault();
 
-   axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${search}&per_page=24&format=json&nojsoncallback=1`).then(response=>setdata(response.data.photos.photo))
+    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${search}&per_page=24&format=json&nojsoncallback=1`).then(response => {
+
+      setdata(response.data.photos.photo)
+    })
 
     setsearch("")
 
@@ -26,38 +29,38 @@ const page = () => {
   return (
     <>
 
-<body className="bg-gradient-to-r from-red-500 to-zinc-500">
+      <body className="bg-gradient-to-r from-red-500 to-zinc-500">
 
 
-<center className='m-10 bg-yellow-600'>
+        <center className='m-10 bg-yellow-600'>
 
-<h2 className='text-5xl '>Image Gallery</h2>
-<h2 className='mt-4 bg-black text-white text-2xl'>Search Images</h2>
+          <h2 className='text-5xl '>Image Gallery</h2>
+          <h2 className='mt-4 bg-black text-white text-2xl'>Search Images</h2>
 
-<form onSubmit={sumbitHandler}>
-
-
-
-  <input className='m-1 w-30 rounded text-center text-xl' type='text' placeholder='search here' value={search} onChange={(e) => {
-    setsearch(e.currentTarget.value)
-
-    console.log(e.target.value)
-  }} />
-
-  <input  className='bg-black rounded p-1 text-white text-md' type='submit' value='Search'/>
-
-</form>
+          <form onSubmit={sumbitHandler}>
 
 
-</center>
-<div>
 
-{data.length>=1?<Gallery data= {data}/>:<h2 className='text-center'>No Data Found</h2>}
+            <input className='m-1 w-30 rounded text-center text-xl' type='text' placeholder='search here' value={search} onChange={(e) => {
+              setsearch(e.target.value)
 
-</div>
+              console.log(e.target.value)
+            }} />
+
+            <input className='bg-black rounded p-1 text-white text-md' type='submit' value='Search' />
+
+          </form>
 
 
-</body>
+        </center>
+        <div>
+
+          {data.length >= 1 ? <Gallery data={data} /> : <h2 className='text-center'>No Data Found</h2>}
+
+        </div>
+
+
+      </body>
 
 
     </>
